@@ -17,7 +17,9 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Пешгирӣ аз ҳаракати зиёдатии экран */
         }
+
         .card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -27,9 +29,9 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             text-align: center;
             width: 320px;
+            margin-bottom: 80px; /* Фосила барои он ки иконкаҳои поён халал нарасонанд */
         }
         
-        /* Танзимоти тугмаи асосӣ */
         .main-btn {
             background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
             border: none;
@@ -39,46 +41,85 @@
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.2s;
-            margin-top: 15px;
             width: 100%;
         }
-        .main-btn:active {
-            transform: scale(0.95);
-            opacity: 0.9;
-        }
 
-        /* Қисми иконкаҳо дар як хат */
-        .icon-bar {
+        /* МЕНЮИ ПОЁНӢ (Bottom Navigation) */
+        .bottom-nav {
+            position: fixed; /* Дар як ҷо мехкӯб мешавад */
+            bottom: 0;       /* Дар қисми аз ҳама поён */
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
             display: flex;
-            justify-content: space-around; /* Иконкаҳоро бо фосилаи баробар мечинад */
-            align-items: center;
-            margin-top: 25px;
-            padding-top: 15px;
+            justify-content: space-around;
+            padding: 15px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px 20px 0 0; /* Кунҷҳои болоии меню каме мудаввар */
         }
 
-        .icon-item {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 22px;
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
             cursor: pointer;
             transition: 0.3s;
+            text-decoration: none;
         }
 
-        .icon-item:hover {
+        .nav-item span {
+            font-size: 10px;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+
+        .nav-item:active {
             color: #2ecc71;
-            transform: translateY(-3px);
+            transform: scale(0.9);
+        }
+
+        .nav-item.active {
+            color: #2ecc71;
         }
     </style>
 </head>
 <body>
+
     <div class="card">
         <h2>VIP Design</h2>
-        <p>Ин сайти шумо бо UX/UI-и муосир аст.</p>
-        
+        <p>Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p>
         <button class="main-btn" onclick="alert('Хуш омадед!')">Оғоз кардан</button>
-
-        <div class="icon-bar">
-            <div class="icon-item"><i class="fa-solid fa-bars"></i></div>  <div class="icon-item"><i class="fa-solid fa-car"></i></div>   <div class="icon-item"><i class="fa-solid fa-plane"></i></div> <div class="icon-item"><i class="fa-solid fa-house"></i></div> </div>
     </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Асосӣ</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-warehouse"></i>
+            <span>Анбор</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-truck"></i>
+            <span>Боркаш</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Қабул</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-plane"></i>
+            <span>Парвоз</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-bars"></i>
+            <span>Меню</span>
+        </div>
+    </div>
+
 </body>
 </html>
