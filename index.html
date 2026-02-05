@@ -10,7 +10,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Пасзаминаи ба сабз монанд */
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             color: white;
             display: flex;
@@ -22,7 +21,7 @@
             overflow: hidden;
         }
 
-        /* Тарҳи матни болоӣ */
+        /* 1. Аниматсияи матни болоӣ (Paygom Cargo) */
         .app-title {
             font-size: 32px;
             font-weight: 800;
@@ -30,8 +29,48 @@
             background: linear-gradient(90deg, #2ecc71, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 5px; /* Фосилаи хурд */
             text-shadow: 2px 2px 10px rgba(46, 204, 113, 0.5);
+            
+            /* Пайваст кардани аниматсия */
+            animation: moveUp 1s ease-out forwards;
+            position: relative;
+        }
+
+        /* 2. Аниматсияи матни зер (Каргои рақами 1) */
+        .app-subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            
+            /* Пайваст кардани аниматсия бо таъхир (delay) */
+            opacity: 0;
+            animation: fadeInSub 0.5s ease-in forwards;
+            animation-delay: 0.8s; /* 0.8 сония пас аз матни болоӣ */
+        }
+
+        /* Ключҳои аниматсияҳо */
+        @keyframes moveUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInSub {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card {
@@ -42,182 +81,26 @@
             border-radius: 20px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             text-align: center;
-            width: 85%; /* Васеътар барои фаро гирифтани экран */
+            width: 85%;
             max-width: 400px;
             margin-bottom: 90px;
-            transition: all 0.5s ease;
+            
+            /* Аниматсияи худи корт */
+            opacity: 0;
+            animation: fadeInSub 0.5s ease-in forwards;
+            animation-delay: 1.2s; /* Пас аз ҳарду матн */
         }
-
-        .fade-in {
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .main-btn {
-            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
-            border: none;
-            padding: 12px 24px;
-            color: white;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .main-btn:active {
-            transform: scale(0.97);
-        }
-
-        /* МЕНЮИ ПОЁНӢ */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(15px);
-            display: flex;
-            justify-content: space-around;
-            padding: 15px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px 20px 0 0;
-            z-index: 1000;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            flex: 1;
-        }
-
-        .nav-item span {
-            font-size: 9px;
-            margin-top: 5px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .nav-item.active {
-            color: #2ecc71;
-            transform: translateY(-8px) scale(1.1);
-        }
-
-        .nav-item.active i {
-            filter: drop-shadow(0 0 8px #2ecc71);
-        }
-
-        .cargo-img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 20px;
-            animation: neonGlow 2s ease-in-out infinite alternate;
-            filter: drop-shadow(0 0 10px rgba(46, 204, 113, 0.7));
-        }
-
-        @keyframes neonGlow {
-            from {
-                filter: drop-shadow(0 0 5px rgba(46, 204, 113, 0.5));
-            }
-            to {
-                filter: drop-shadow(0 0 20px rgba(46, 204, 113, 0.8));
-            }
-        }
-
-        .vip-text {
-            font-weight: 700;
-            font-size: 14px;
-            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-top: 15px;
-            letter-spacing: 1px;
-        }  
+        
+        /* ... (дигар стилҳои шумо бетағйир мемонанд) ... */
     </style>
 </head> 
 <body>
 
     <div class="app-title">Paygom Cargo</div>
+    <div class="app-subtitle">Каргои рақами 1 дар ТҶ</div>
 
     <div class="card" id="mainCard">
-        <img src="IMG_20260206_000942_611.jpg" alt="Cargo" class="cargo-img">                
-    
-        <h2 id="cardTitle">VIP Design</h2>
-        <p id="cardText">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p>
-    
-    <div class="vip-text">Доставкаи зуд ва боэътимод</div>
-    
-    <button class="main-btn" onclick="alert('Хуш омадед!')">Оғоз кардан</button>
-    </div>
-    
-    
-    <div class="bottom-nav">
-        <div class="nav-item" onclick="updatePage('china', this)">
-            <i class="fa-solid fa-warehouse"></i>
-            <span>Дар Хитой</span>
         </div>
-        <div class="nav-item" onclick="updatePage('road', this)">
-            <i class="fa-solid fa-truck"></i>
-            <span>Дар роҳ</span>
-        </div>
-        <div class="nav-item active" onclick="updatePage('home', this)">
-            <i class="fa-solid fa-house"></i>
-            <span>Асосӣ</span>
-        </div>
-        <div class="nav-item" onclick="updatePage('dushanbe', this)">
-            <i class="fa-solid fa-warehouse"></i>
-            <span>Дар Душанбе</span>
-        </div>
-        <div class="nav-item" onclick="updatePage('received', this)">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Қабул шуд</span>
-        </div>
-    </div>
-
-    <script>
-        function updatePage(page, element) {
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            element.classList.add('active');
-
-            const title = document.getElementById('cardTitle');
-            const text = document.getElementById('cardText');
-            const card = document.getElementById('mainCard');
-
-            card.classList.remove('fade-in');
-            void card.offsetWidth; 
-            card.classList.add('fade-in');
-
-            if (page === 'home') {
-                title.innerText = "VIP Design";
-                text.innerText = "Хуш омадед ба саҳифаи асосӣ!";
-            } else if (page === 'china') {
-                title.innerText = "Анбори Хитой";
-                text.innerText = "Борҳои шумо дар анбори мо дар Хитой қабул шуданд.";
-            } else if (page === 'road') {
-                title.innerText = "Дар роҳ";
-                text.innerText = "Мошин дар ҳаракат аст. Борҳо ба самти Тоҷикистон меоянд.";
-            } else if (page === 'dushanbe') {
-                title.innerText = "Душанбе";
-                text.innerText = "Борҳо ба анбори Душанбе расиданд. Марҳамат омада гиред!";
-            } else if (page === 'received') {
-                title.innerText = "Қабул шуд";
-                text.innerText = "Ташаккур, ки аз хизматрасонии мо истифода бурдед!";
-            }
-        }
-    </script>
-
-</body>
+    
+    </body>
 </html>
