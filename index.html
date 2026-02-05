@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App-и Ман</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 80%;
+        }
+        button {
+            background-color: #2481cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2 id="user-name">Салом!</h2>
+        <p>Ин барномаи хурди ман дар дохили Телеграм аст.</p>
+        <button onclick="sendData()">Фиристодани маълумот ба бот</button>
+        <button style="background: #e53935;" onclick="closeApp()">Пӯшидан</button>
+    </div>
+
+    <script>
+        // Инитсиализатсияи Telegram WebApp
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Кушодани барнома дар тамоми экран
+
+        // Гирифтани номи корбар аз Телеграм
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById("user-name").innerText = "Салом, " + tg.initDataUnsafe.user.first_name + "!";
+        }
+
+        function sendData() {
+            // Фиристодани маълумот ба бот
+            tg.sendData("Ин паём аз Mini App фиристода шуд!");
+        }
+
+        function closeApp() {
+            tg.close(); // Пӯшидани барнома
+        }
+    </script>
+</body>
+</html>
