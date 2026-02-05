@@ -17,7 +17,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden; /* Пешгирӣ аз ҳаракати зиёдатии экран */
+            overflow: hidden;
         }
 
         .card {
@@ -29,7 +29,18 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             text-align: center;
             width: 320px;
-            margin-bottom: 80px; /* Фосила барои он ки иконкаҳои поён халал нарасонанд */
+            margin-bottom: 80px;
+            transition: all 0.5s ease;
+        }
+
+        /* Функсияи аниматсияи пайдошавии матн */
+        .fade-in {
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .main-btn {
@@ -42,12 +53,13 @@
             cursor: pointer;
             transition: transform 0.2s;
             width: 100%;
+            margin-top: 15px;
         }
 
-        /* МЕНЮИ ПОЁНӢ (Bottom Navigation) */
+        /* МЕНЮИ ПОЁНӢ */
         .bottom-nav {
-            position: fixed; /* Дар як ҷо мехкӯб мешавад */
-            bottom: 0;       /* Дар қисми аз ҳама поён */
+            position: fixed;
+            bottom: 0;
             left: 0;
             right: 0;
             background: rgba(255, 255, 255, 0.1);
@@ -56,66 +68,111 @@
             justify-content: space-around;
             padding: 15px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px 20px 0 0; /* Кунҷҳои болоии меню каме мудаввар */
+            border-radius: 20px 20px 0 0;
+            z-index: 1000;
         }
 
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 18px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            flex: 1;
         }
 
         .nav-item span {
-            font-size: 10px;
-            margin-top: 4px;
+            font-size: 9px;
+            margin-top: 5px;
             font-weight: bold;
+            text-align: center;
+        }
+
+        /* Ҳолати фаъол (Active State) */
+        .nav-item.active {
+            color: #2ecc71;
+            transform: translateY(-8px) scale(1.1);
+        }
+
+        .nav-item.active i {
+            filter: drop-shadow(0 0 8px #2ecc71);
         }
 
         .nav-item:active {
-            color: #2ecc71;
             transform: scale(0.9);
-        }
-
-        .nav-item.active {
-            color: #2ecc71;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h2>VIP Design</h2>
-        <p>Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p>
+    <div class="card" id="mainCard">
+        <h2 id="cardTitle">VIP Design</h2>
+        <p id="cardText">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p>
         <button class="main-btn" onclick="alert('Хуш омадед!')">Оғоз кардан</button>
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active">
+        <div class="nav-item active" onclick="updatePage('home', this)">
             <i class="fa-solid fa-house"></i>
             <span>Асосӣ</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="updatePage('china', this)">
             <i class="fa-solid fa-warehouse"></i>
-            <span>Дар анбори Хитой</span>
+            <span>Дар Хитой</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="updatePage('road', this)">
             <i class="fa-solid fa-truck"></i>
             <span>Дар роҳ</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="updatePage('dushanbe', this)">
             <i class="fa-solid fa-warehouse"></i>
             <span>Дар Душанбе</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="updatePage('received', this)">
             <i class="fa-solid fa-circle-check"></i>
             <span>Қабул шуд</span>
         </div>
     </div>
+
+    <script>
+        function updatePage(page, element) {
+            // 1. Иваз кардани ранги иконкаҳо
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            // 2. Иваз кардани маълумоти Card
+            const title = document.getElementById('cardTitle');
+            const text = document.getElementById('cardText');
+            const card = document.getElementById('mainCard');
+
+            // Илова кардани аниматсия
+            card.classList.remove('fade-in');
+            void card.offsetWidth; // Reset animation
+            card.classList.add('fade-in');
+
+            if (page === 'home') {
+                title.innerText = "VIP Design";
+                text.innerText = "Хуш омадед ба саҳифаи асосӣ!";
+            } else if (page === 'china') {
+                title.innerText = "Анбори Хитой";
+                text.innerText = "Борҳои шумо дар анбори мо дар Хитой қабул шуданд.";
+            } else if (page === 'road') {
+                title.innerText = "Дар роҳ";
+                text.innerText = "Мошин дар ҳаракат аст. Борҳо ба самти Тоҷикистон меоянд.";
+            } else if (page === 'dushanbe') {
+                title.innerText = "Душанбе";
+                text.innerText = "Борҳо ба анбори Душанбе расиданд. Марҳамат омада гиред!";
+            } else if (page === 'received') {
+                title.innerText = "Қабул шуд";
+                text.innerText = "Ташаккур, ки аз хизматрасонии мо истифода бурдед!";
+            }
+        }
+    </script>
 
 </body>
 </html>
