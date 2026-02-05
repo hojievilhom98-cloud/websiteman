@@ -104,6 +104,34 @@
         .nav-item:active {
             transform: scale(0.9);
         }
+        .cargo-img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            /* Аниматсияи дурахшиши неонӣ (neon glow) */
+            animation: neonGlow 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(46, 204, 113, 0.7));
+        }
+
+        @keyframes neonGlow {
+            from {
+                filter: drop-shadow(0 0 5px rgba(46, 204, 113, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 20px rgba(46, 204, 113, 0.8));
+            }
+        }
+
+        .vip-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }  
     </style>
 </head> 
 <body>
@@ -113,7 +141,18 @@
         <p id="cardText">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p>
         <button class="main-btn" onclick="alert('Хуш омадед!')">Оғоз кардан</button>
     </div>
-
+    <div class="card" id="mainCard">
+        <img src="YOUR_IMAGE_URL_HERE" alt="Cargo" class="cargo-img">                
+    
+        <h2 id="cardTitle">VIP Design</h2>
+        <p id="cardText">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p>
+    
+    <div class="vip-text">Доставкаи зуд ва боэътимод</div>
+    
+    <button class="main-btn" onclick="alert('Хуш омадед!')">Оғоз кардан</button>
+    </div>
+    
+    
     <div class="bottom-nav">
         <div class="nav-item" onclick="updatePage('china', this)">
             <i class="fa-solid fa-warehouse"></i>
