@@ -10,7 +10,12 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+           /* background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);*/
+            Background: #3ab5b0;
+            background: linear-gradient(
+              to right,
+              #3ab5b0,#3d99be,#56317a
+            );
             color: white;
             display: flex;
             flex-direction: column;
@@ -179,17 +184,6 @@
         @keyframes neonGlow {
             from { filter: drop-shadow(0 0 5px rgba(46, 204, 113, 0.5)); }
             to { filter: drop-shadow(0 0 20px rgba(46, 204, 113, 0.8)); }
-        }
-
-        .vip-text {
-            font-weight: 700;
-            font-size: 14px;
-            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
         }
 
         .main-btn {
