@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paygom Cargo VIP</title>
+    <title>Дамир карго</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Пасзаминаи сабзи торик (gradient) */
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             color: white;
             display: flex;
@@ -19,39 +18,31 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden; /* Пешгирӣ аз ҳаракат кардани экран */
+            overflow: hidden;
         }
 
-        /* 1. Аниматсияи матни болоӣ (Paygom Cargo) */
-        .app-title {
-            font-size: 32px;
-            font-weight: 800;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #2ecc71, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* ТАНЗИМОТИ ЛОГОТИПИ БОЛОӢ (Акс) */
+        .app-logo {
+            height: 50px; /* Андозаи логотип */
+            width: auto;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 10px rgba(46, 204, 113, 0.5);
             
             /* Аниматсия */
             animation: moveUp 1s ease-out forwards;
             position: relative;
+            filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.5));
         }
 
-        /* 2. Аниматсияи матни зер (Каргои рақами 1) */
         .app-subtitle {
             font-size: 14px;
             font-weight: 400;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 25px;
-            
-            /* Аниматсия бо таъхир */
             opacity: 0;
             animation: fadeInSub 0.5s ease-in forwards;
             animation-delay: 0.8s;
         }
 
-        /* Ключҳои аниматсияҳо */
         @keyframes moveUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -62,7 +53,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* КОРТ - Маркази экран */
         .card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
@@ -74,17 +64,15 @@
             width: 85%;
             max-width: 380px;
             margin-bottom: 90px;
-            
-            /* Аниматсияи корт бо таъхир */
             opacity: 0;
             animation: fadeInSub 0.5s ease-in forwards;
             animation-delay: 1.2s;
             transition: all 0.3s ease;
         }
 
-        /* Акс дар дохили корт */
         .cargo-img {
-            width: 420px;
+            width: 100%; /* Тағйир дода шуд, то аз корт берун набарояд */
+            max-width: 200px; /* Андозаи максималӣ */
             height: auto;
             margin-bottom: 20px;
             animation: neonGlow 2s ease-in-out infinite alternate;
@@ -121,7 +109,6 @@
 
         .main-btn:active { transform: scale(0.97); }
 
-        /* МЕНЮИ ПОЁНӢ */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -165,7 +152,8 @@
 </head> 
 <body>
 
-    <div class="app-title">Damir Cargo</div>
+    <img src="YOUR_LOGO_IMAGE_URL.png" alt="Damir Cargo" class="app-logo">
+    
     <div class="app-subtitle">Каргои рақами 1 дар ТҶ</div>
 
     <div class="card" id="mainCard">
@@ -204,18 +192,15 @@
 
     <script>
         function updatePage(page, element) {
-            // 1. Иваз кардани ранги иконкаҳо9
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
             element.classList.add('active');
 
-            // 2. Иваз кардани маълумоти Card
             const title = document.getElementById('cardTitle');
             const text = document.getElementById('cardText');
             const card = document.getElementById('mainCard');
 
-            // Аниматсияи ивазшавии матн
             card.style.opacity = '0';
             setTimeout(() => {
                 if (page === 'home') {
