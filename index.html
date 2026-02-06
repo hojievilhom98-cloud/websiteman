@@ -72,6 +72,38 @@
             color: #2ecc71;
         }
 
+        /* Контейнери Акс + Ном */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Фосила байни акс ва матн */
+        }
+
+/* Контейнери матнҳо */
+        .profile-text {
+            display: flex;
+            flex-direction: column; /* Матнҳоро дар поёни якдигар мегузорад */
+        }
+
+/* Навиштаҷоти Пайғом */
+        .brand-name {
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+    /* Ранги градиенти сабз */
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+/* Навиштаҷоти карго */
+        .brand-sub {
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            margin-top: -2px; /* Каме болотар бурдан */
+        }
+        
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -207,7 +239,14 @@
 </head> 
 <body>
     <div class="header-card">
-        <img src="IMG_20260206_152823_477.png" alt="Profile" class="profile-img">
+        <div class="profile-section">
+            <img src="IMG_20260206_152823_477.png" alt="Profile" class="profile-img">
+            <div class="profile-text">
+                <span class="brand-name">Пайғом</span>
+                <span class="brand-sub">карго</span>
+            </div>
+        </div>
+
         <div class="icons-container">
             <i class="fa-solid fa-bell icon-item"></i>
             <i class="fa-solid fa-envelope icon-item"></i>
