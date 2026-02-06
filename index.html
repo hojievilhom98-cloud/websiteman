@@ -32,7 +32,58 @@
             position: relative;
             filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.5));
         }
+        /* ТАНЗИМОТИ КОРТ ДАР БОЛО */
+        .header-card {
+            background: rgba(255, 255, 255, 0.05); /* Фони шаффоф */
+            backdrop-filter: blur(10px); /* Эффекти хира */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    /* Ҷойгиршавӣ */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    
+            width: 85%;
+            max-width: 400px;
+            margin: 20px auto; /* Фосила аз боло */
+    
+    /* Аниматсияи пайдошавӣ */
+            animation: fadeInDown 0.8s ease-out;
+        }
 
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #2ecc71;
+        }
+
+        .icons-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon-item {
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon-item:hover {
+            color: #2ecc71;
+        }
+
+/* Аниматсия */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .app-subtitle {
             font-size: 14px;
             font-weight: 400;
@@ -150,6 +201,14 @@
     </style>
 </head> 
 <body>
+    <div class="header-card">
+        <img src="IMG_20260206_152823_477.png" alt="Profile" class="profile-img">
+
+        <div class="icons-container">
+            <i class="fa-solid fa-bell icon-item"></i>
+            <i class="fa-solid fa-envelope icon-item"></i>
+            <i class="fa-solid fa-user icon-item"></i>
+        </div>
 
     <img src="IMG_20260206_152823_477.png" alt="Damir Cargo" class="app-logo">
     
