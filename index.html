@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дамир карго</title>
+    <title>Damir Cargo VIP</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -21,42 +21,33 @@
             overflow: hidden;
         }
 
-        /* ТАНЗИМОТИ ЛОГОТИПИ БОЛОӢ (Акс) */
-        .app-logo {
-            height: 300px; /* Андозаи логотип */
-            width: auto;
-            margin-bottom: 5px;
-            
-            /* Аниматсия */
-            animation: moveUp 1s ease-out forwards;
-            position: relative;
-            filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.5));
-        }
-        /* ТАНЗИМОТИ КОРТ ДАР БОЛО */
+        /* 1. КОРТ ДАР БОЛОИ ЭКРАН */
         .header-card {
-            background: rgba(255, 255, 255, 0.05); /* Фони шаффоф */
-            backdrop-filter: blur(10px); /* Эффекти хира */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 15px;
+            padding: 10px 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    
-    /* Ҷойгиршавӣ */
+            
             display: flex;
             justify-content: space-between;
             align-items: center;
-    
-            width: 85%;
+            
+            width: 90%;
             max-width: 400px;
-            margin: 20px auto; /* Фосила аз боло */
-    
-    /* Аниматсияи пайдошавӣ */
+            
+            /* Ҷойгиршавӣ дар боло */
+            position: absolute;
+            top: 15px;
+            z-index: 1000;
+            
             animation: fadeInDown 0.8s ease-out;
         }
 
         .profile-img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #2ecc71;
@@ -78,12 +69,22 @@
             color: #2ecc71;
         }
 
-/* Аниматсия */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
+        /* 2. ЛОГОТИПИ АСОСӢ */
+        .app-logo {
+            height: 150px;
+            width: auto;
+            margin-top: 80px; /* Фосила аз header-card */
+            margin-bottom: 5px;
+            animation: moveUp 1s ease-out forwards;
+            position: relative;
+            filter: drop-shadow(0px 0px 5px rgba(46, 204, 113, 0.5));
+        }
+
         .app-subtitle {
             font-size: 14px;
             font-weight: 400;
@@ -104,6 +105,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* 3. КОРТИ МАРКАЗӢ */
         .card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
@@ -119,10 +121,9 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-
         .cargo-img {
-            width: 100%; /* Тағйир дода шуд, то аз корт берун набарояд */
-            max-width: 200px; /* Андозаи максималӣ */
+            width: 100%;
+            max-width: 200px;
             height: auto;
             margin-bottom: 20px;
             animation: neonGlow 2s ease-in-out infinite alternate;
@@ -159,6 +160,7 @@
 
         .main-btn:active { transform: scale(0.97); }
 
+        /* 4. МЕНЮИ ПОЁНӢ */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -203,12 +205,12 @@
 <body>
     <div class="header-card">
         <img src="IMG_20260206_152823_477.png" alt="Profile" class="profile-img">
-
         <div class="icons-container">
             <i class="fa-solid fa-bell icon-item"></i>
             <i class="fa-solid fa-envelope icon-item"></i>
             <i class="fa-solid fa-user icon-item"></i>
         </div>
+    </div>
 
     <img src="IMG_20260206_152823_477.png" alt="Damir Cargo" class="app-logo">
     
@@ -250,18 +252,22 @@
     
     <script>
         function updatePage(page, element) {
+            // 1. Иваз кардани ранги иконкаҳо
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
             element.classList.add('active');
 
+            // 2. Иваз кардани маълумоти Card
             const title = document.getElementById('cardTitle');
             const text = document.getElementById('cardText');
             const card = document.getElementById('mainCard');
-            card.style.opacity = '1';
+            
+            // Намоён кардани корт
             card.style.opacity = '0';
+            
             setTimeout(() => {
-                if (page === 'homej') {
+                if (page === 'homue') {
                     title.innerText = "VIP Design";
                     text.innerText = "Хуш омадед ба саҳифаи асосӣ!";
                 } else if (page === 'china') {
@@ -281,6 +287,5 @@
             }, 300);
         }
     </script>
-
 </body>
 </html>
