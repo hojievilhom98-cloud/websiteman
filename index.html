@@ -67,8 +67,9 @@
             opacity: 0;
             animation: fadeInSub 0.5s ease-in forwards;
             animation-delay: 1.2s;
-            transition: all 0.3s ease;
+            transition: opacity 0.5s ease-in-out;
         }
+
 
         .cargo-img {
             width: 100%; /* Тағйир дода шуд, то аз корт берун набарояд */
@@ -189,7 +190,7 @@
             <span>Қабул</span>
         </div>
     </div>
-
+    
     <script>
         function updatePage(page, element) {
             document.querySelectorAll('.nav-item').forEach(item => {
@@ -200,7 +201,7 @@
             const title = document.getElementById('cardTitle');
             const text = document.getElementById('cardText');
             const card = document.getElementById('mainCard');
-
+            card.style.opacity = '1';
             card.style.opacity = '0';
             setTimeout(() => {
                 if (page === 'home') {
