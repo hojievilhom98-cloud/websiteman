@@ -20,8 +20,6 @@
             margin: 0;
             overflow: hidden;
         }
-
-        
         /* 1. КОРТ ДАР БОЛОИ ЭКРАН */
         .header-card {
             background: rgba(255, 255, 255, 0.05);
@@ -35,12 +33,16 @@
             justify-content: space-between;
             align-items: center;
             
-            width: 90%;
-            max-width: 400px;
+            width: 100%;
+            max-width: none;
             
             /* Ҷойгиршавӣ дар боло */
             position: absolute;
-            top: 5px;
+            top: 0;
+            left: 0; 
+            right: 0; 
+            margin: 0; 
+            box-sizing: border-box;
             z-index: 1000;
             
             animation: fadeInDown 0.8s ease-out;
