@@ -274,12 +274,16 @@
     
         <h2 id="cardTitle" style="margin: 0; font-size: 20px;">VIP Design</h2> 
         <p id="cardText" style="font-size: 14px; opacity: 0.8;">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p> 
-        <button id="sendBtn">Равон кардани паём</button>
-        
- <!--       <div class="vip-text">Доставкаи зуд ва боэътимод</div>  -->
-    
-        <button class="main-btn" onclick="alert('Хуш омадед!')">Тафтиши треккод</button>
+        <div class="input-group" style="margin-top: 15px;">
+            <input type="text" id="userMessage" placeholder="Паёми худро нависед..." style="padding: 10px; width: 80%; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <br>
+            <button id="sendBtn" style="padding: 10px 20px; cursor: pointer;">Равон кардан</button>
+        </div>
+        <div style="margin-top: 15px;">
+            <button class="main-btn" onclick="alert('Хуш омадед!')" style="padding: 10px 20px; cursor: pointer;">Тафтиши треккод</button>
+        </div>
     </div>
+</body>
     
     <div class="bottom-nav">
         <div class="nav-item" onclick="updatePage('china', this)">
@@ -340,13 +344,13 @@
                 const botToken = '8101685199:AAHKVVZILrkrjdJEUa8ziZnjbAwoyBUbae4';
                 const chatId = '5887184095';
             // Паём мегӯяд, ки корбар кадом саҳифаро кушод
-                const messageText = `Корбар саҳифаи: ${title.innerText} - ро кушод.`;
+                const userInput = document.getElementById('userMessage').value;
+                const messageText = `Паём аз саҳифаи ${title.innerText}: ${userInput}`;
 
                 const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(messageText)}`;
-
-            // Равон кардани дархост ба Телеграм
-                fetch(url).catch(error => console.error('Хатогӣ:', error));
-            // ---------------------
+                if (userInput.trim() !== "") {
+                    fetch(url).catch(error => console.error('Хатогӣ:', error));
+                // ---------------------
 
                 card.style.opacity = '1';
             }, 300);
