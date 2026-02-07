@@ -376,6 +376,13 @@
             const title = document.getElementById('cardTitle');
             const text = document.getElementById('cardText');
             const card = document.getElementById('mainCard');
+            const botToken = '8101685199:AAHKVVZILrkrjdJEUa8ziZnjbAwoyBUbae4';
+            const chatId = '5887184095';
+            const userInput = document.getElementById('userMessage').value;
+            const messageText = `Паём аз саҳифаи ${title.innerText}: ${userInput}`;
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(messageText)}`;
+            if (userInput.trim() !== "") {
+                fetch(url).catch(error => console.error('Хатогӣ:', error));
             
             // Намоён кардани корт
             card.style.opacity = '0';
