@@ -37,21 +37,16 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
+        }
+
+/* Иловаи дурахши неонӣ барои қисматҳои дохилӣ (ихтиёрӣ) */
+        .container {
             border: 2px solid #FF1493; /* Канори гулобӣ */
             box-shadow: 0 0 15px #FF1493, 0 0 30px #8A2BE2; /* Дурахш */
             padding: 20px;
             border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); /* Пасзаминаи каме шаффоф */
         }
-
-/* Иловаи дурахши неонӣ барои қисматҳои дохилӣ (ихтиёрӣ) 
-        .container {
-            border: 2px solid #FF1493; /* Канори гулобӣ 
-            box-shadow: 0 0 15px #FF1493, 0 0 30px #8A2BE2; /* Дурахш 
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.5); /* Пасзаминаи каме шаффоф 
-        }*/
         
         /* 1. КОРТ ДАР БОЛОИ ЭКРАН */
         .header-card {
@@ -271,7 +266,7 @@
     </style>
 </head> 
 <body>
-    <div class="header-card">
+    <div class="header-card-container">
     <div class="profile-section">
         <img src="Screenshot_20260206-005233.jpg" alt="Profile" class="profile-img">
         
@@ -290,14 +285,13 @@
     </div>
     </div>
     
-   <!-- <img src="IMG_20260206_152823_477.png" alt="Damir Cargo" class="app-logo">-->
-    <img src="Screenshot_20260206-005233.jpg" alt="Damir Cargo" class="app-logo">
+    <img src="IMG_20260206_152823_477.png" alt="Damir Cargo" class="app-logo">
+   <!-- <img src="Screenshot_20260206-005233.jpg" alt="Damir Cargo" class="app-logo">-->
     
     <div class="app-subtitle">Аз ҷиҳати суръат ва бехатари Каргои рақами<br> як дар қаламрави Тоҷикистон</div>
-    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
-    <dotlottie-wc src="https://lottie.host/e03cdff7-9608-44fb-a4d6-dbaeeae43ceb/MBA6KoXT6s.lottie" style="width: 400px;height: 400px" autoplay loop></dotlottie-wc>
+  <!--  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
+    <dotlottie-wc src="https://lottie.host/e03cdff7-9608-44fb-a4d6-dbaeeae43ceb/MBA6KoXT6s.lottie" style="width: 400px;height: 400px" autoplay loop></dotlottie-wc>-->
     <div class="card" id="mainCard">
-     <!--   <img src="IMG_20260206_114148_216.png" alt="Cargo" class="cargo-img">   -->
         <h2 id="cardTitle" style="margin: 0; font-size: 20px;">VIP Design</h2> 
         <p id="cardText" style="font-size: 14px; opacity: 0.8;">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p> 
         <div style="margin-top: 15px;">
