@@ -9,23 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-      /*  body {
-            font-family: 'Inter', sans-serif;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            background-image: url('laptop-notepad-black-background-with-neon-light-flat-lay.jpg'); 
-            background-size: cover; /* Акс тамоми экранро мепӯшад 
-            background-position: center; /* Акс дар марказ ҷойгир мешавад 
-            background-repeat: no-repeat; /* Акс такрор намешавад 
-        }*/
+        /* --- УСЛУБҲОИ АСОСӢ --- */
         body {
             font-family: 'Inter', sans-serif;
+            /* Пасзаминаи асосӣ */
             background: linear-gradient(135deg, #05002E 0%, #000000 100%);
             color: white;
             display: flex;
@@ -35,7 +22,14 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
+            transition: background 0.5s ease; /* Эффект барои ивазшавии нарм */
         }
+
+        /* --- КЛАССИ НАВ БАРОИ ПАСЗАМИНАИ HOMUE --- */
+        body.homue-page {
+            background: linear-gradient(135deg, #1a0033 0%, #000000 100%); /* Пасзаминаи нав */
+        }
+
         /* 1. КОРТ ДАР БОЛОИ ЭКРАН */
         .header-card {
             background: rgba(255, 255, 255, 0.05);
@@ -108,7 +102,7 @@
             text-transform: uppercase;
     /* Ранги градиенти сабз */
             background: linear-gradient(90deg, #1e8449, #2ecc71);
-       /*     background: linear-gradient(90deg, #2ecc71, #27ae60);*/
+       /* background: linear-gradient(90deg, #2ecc71, #27ae60);*/
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -188,8 +182,6 @@
             max-width: 250px;
             height: auto;
             margin-bottom: 20px;
-         /*   animation: neonGlow 2s ease-in-out infinite alternate; */
-            /*filter: drop-shadow(0 0 10px rgba(46, 204, 113, 0.7));*/
         }
 
         @keyframes neonGlow {
@@ -237,6 +229,14 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             flex: 1;
         }
+        
+        /* Услуб барои тугмаи актив */
+        .nav-item.active {
+            color: #2ecc71;
+            transform: translateY(-8px) scale(1.1);
+        }
+
+        .nav-item.active i { filter: drop-shadow(0 0 8px #2ecc71); }
 
         .nav-item span {
             font-size: 9px;
@@ -244,13 +244,6 @@
             font-weight: bold;
             text-align: center;
         }
-
-        .nav-item.active {
-            color: #2ecc71;
-            transform: translateY(-8px) scale(1.1);
-        }
-
-        .nav-item.active i { filter: drop-shadow(0 0 8px #2ecc71); }
     </style>
 </head> 
 <body>
@@ -274,11 +267,9 @@
     </div>
     
     <img src="IMG_20260206_152823_477.png" alt="Damir Cargo" class="app-logo">
-   <!-- <img src="Screenshot_20260206-005233.jpg" alt="Damir Cargo" class="app-logo">-->
     
     <div class="app-subtitle">Аз ҷиҳати суръат ва бехатари Каргои рақами<br> як дар қаламрави Тоҷикистон</div>
-  <!--  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
-    <dotlottie-wc src="https://lottie.host/e03cdff7-9608-44fb-a4d6-dbaeeae43ceb/MBA6KoXT6s.lottie" style="width: 400px;height: 400px" autoplay loop></dotlottie-wc>-->
+    
     <div class="card" id="mainCard">
         <h2 id="cardTitle" style="margin: 0; font-size: 20px;">VIP Design</h2> 
         <p id="cardText" style="font-size: 14px; opacity: 0.8;">Ин сайти шумо бо UX/UI-и муосир ва менюи поёнӣ аст.</p> 
@@ -291,6 +282,7 @@
             <button id="sendBtn" style="padding: 10px 20px; cursor: pointer;">Равон кардан</button>
         </div>
     </div>
+
     <div class="bottom-nav">
         <div class="nav-item" onclick="updatePage('china', this)">
             <i class="fa-solid fa-warehouse"></i>
@@ -313,9 +305,10 @@
             <span>Қабул</span>
         </div>
     </div>
+    
     <script>
         function updatePage(page, element) {
-            // 1. Иваз кардани ранги иконкаҳо
+            // 1. Иваз кардани ранги иконкаҳо (Актив кардани тугма)
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
@@ -325,6 +318,9 @@
             const title = document.getElementById('cardTitle');
             const text = document.getElementById('cardText');
             const card = document.getElementById('mainCard');
+            const body = document.body; // Пайдо кардани body барои иваз кардани пасзамина
+
+            // 3. Амалиёти бот (пешина)
             const botToken = '8101685199:AAHKVVZILrkrjdJEUa8ziZnjbAwoyBUbae4';
             const chatId = '5887184095';
             const userInput = document.getElementById('userMessage').value;
@@ -333,25 +329,33 @@
             if (userInput.trim() !== "") {
                 fetch(url).catch(error => console.error('Хатогӣ:', error));
             }
-            // Намоён кардани корт
+            
+            // Намоён кардани корт (эффект)
             card.style.opacity = '0';
             
             setTimeout(() => {
+                // --- ФУНКСИЯИ НАВ БАРОИ ПАСЗАМИНА ---
                 if (page === 'homue') {
                     title.innerText = "VIP Design";
                     text.innerText = "Хуш омадед ба саҳифаи асосӣ!";
-                } else if (page === 'china') {
-                    title.innerText = "Анбори Хитой";
-                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
-                } else if (page === 'road') {
-                    title.innerText = "Дар роҳ";
-                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
-                } else if (page === 'dushanbe') {
-                    title.innerText = "Душанбе";
-                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
-                } else if (page === 'received') {
-                    title.innerText = "Қабул шуд";
-                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                    body.classList.add('homue-page'); // Илова кардани пасзаминаи нав
+                } else {
+                    body.classList.remove('homue-page'); // Баргардонидани пасзаминаи асосӣ
+                    
+                    // --- МАНТИҚИ ПЕШИНА ---
+                    if (page === 'china') {
+                        title.innerText = "Анбори Хитой";
+                        text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                    } else if (page === 'road') {
+                        title.innerText = "Дар роҳ";
+                        text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                    } else if (page === 'dushanbe') {
+                        title.innerText = "Душанбе";
+                        text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                    } else if (page === 'received') {
+                        title.innerText = "Қабул шуд";
+                        text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                    }
                 }
 
                 card.style.opacity = '1';
