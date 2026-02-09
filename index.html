@@ -4,43 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Damir Cargo VIP</title>
+    <meta name="google-site-verification" content="YzXCJrJWLs9dKf1r6eLdFHkcTZXVWM2nQvaC8HftE64" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
+        /* --- УСЛУБҲОИ АСОСӢ --- */
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #05002E 0%, #000000 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
             overflow: hidden;
             transition: background 0.5s ease;
-            height: 100vh;
         }
 
-        /* --- ПАСЗАМИНАҲО --- */
-        /* Пасзаминаи асосӣ (пешина) */
-        body.default-bg {
-            background: linear-gradient(135deg, #05002E 0%, #000000 100%);
-        }
-        /* Пасзаминаи нав барои Homue */
-        body.homue-bg {
-            background: linear-gradient(135deg, #4a00e0 0%, #000000 100%); /* Ранги нав */
+        /* --- КЛАССИ НАВ БАРОИ ПАСЗАМИНАИ HOMUE --- */
+        body.homue-page {
+            background: linear-gradient(135deg, #1a0033 0%, #000000 100%);
         }
 
-        /* --- ЭЛЕМЕНТҲОИ УМУМӢ --- */
-        .page-content { display: none; } /* Ҳама чиз дар аввал пинҳон аст */
+        /* --- ИДОРАИ МУНДАРИҶА (HIDE/SHOW) --- */
+        .page-content {
+            display: none; /* Ҳама чиз дар аввал пинҳон */
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         
         /* Нишон додани мундариҷаи актив */
-        body.default-bg #default-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        body.homue-bg #homue-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; color: white; }
+        body.default-view #default-content { display: flex; }
+        body.homue-view #homue-content { display: flex; }
 
-        /* Услубҳои контейнери пешина */
-        .header-card { /* ... услуби пешинаи шумо ... */ }
-        .app-logo { /* ... услуби пешинаи шумо ... */ }
-        .card { /* ... услуби пешинаи шумо ... */ }
-        
-        /* Услуби мундариҷаи нав (Homue) */
-        #homue-content h1 { font-size: 3em; animation: fadeIn 1s; }
-        #homue-content p { font-size: 1.5em; animation: fadeIn 1.5s; }
+        /* --- УСЛУБҲОИ ПЕШИНА (Default Content) --- */
+        .header-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0; 
+            right: 0; 
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+        .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #2ecc71; }
+        .icons-container { display: flex; gap: 15px; }
+        .icon-item { font-size: 20px; color: white; cursor: pointer; }
+        .profile-section { display: flex; align-items: center; gap: 10px; }
+        .profile-text { display: flex; flex-direction: column; }
+        .brand-name { font-size: 16px; font-weight: 800; text-transform: uppercase; background: linear-gradient(90deg, #1e8449, #2ecc71); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .brand-name-red { font-size: 16px; font-weight: 800; text-transform: uppercase; background: linear-gradient(90deg, #FF0000, #8B0000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-left: 2px; }
+        .brand-sub { font-size: 12px; font-weight: 600; color: white; margin-top: -2px; }
+        .app-logo { height: 250px; width: auto; margin-top: -50px; }
+        .app-subtitle { font-size: 16px; font-weight: 400; color: rgba(255, 255, 255, 0.7); margin-top: 10px; }
+        .card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 24px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5); text-align: center; width: 85%; max-width: 380px; margin-top: 20px; }
+        .main-btn { background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%); border: none; padding: 12px 24px; color: white; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; }
+
+        /* --- УСЛУБҲОИ МУНДАРИҶАИ НАВ (Homue Content) --- */
+        #homue-content h1 { font-size: 2.5em; animation: fadeIn 1s; color: #fff; }
+        #homue-content p { font-size: 1.2em; animation: fadeIn 1.5s; color: #ccc; }
 
         /* --- МЕНЮИ ПОЁНӢ --- */
         .bottom-nav {
@@ -48,76 +84,135 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-around;
             padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px 25px 0 0;
             z-index: 1000;
         }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .nav-item.active { color: #2ecc71; transform: translateY(-5px); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: rgba(255, 255, 255, 0.5); font-size: 18px; cursor: pointer; flex: 1; }
+        .nav-item.active { color: #2ecc71; transform: translateY(-8px) scale(1.1); }
+        .nav-item.active i { filter: drop-shadow(0 0 8px #2ecc71); }
+        .nav-item span { font-size: 9px; margin-top: 5px; font-weight: bold; }
         
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-</head>
-<body class="default-bg"> <div id="default-content" class="page-content">
-        <div class="header-card">...Header...</div>
+</head> 
+<body class="default-view">
+    
+    <div id="default-content" class="page-content">
+        <div class="header-card">
+            <div class="profile-section">
+                <img src="Screenshot_20260206-005233.jpg" alt="Profile" class="profile-img">
+                <div class="profile-text">
+                    <div>
+                        <span class="brand-name">DAMIR</span>
+                        <span class="brand-name-red">CARGO</span>
+                    </div>
+                    <span class="brand-sub">боэътимод ва босуръат</span>
+                </div>
+            </div>
+            <div class="icons-container">
+                <i class="fa-solid fa-bell icon-item"></i>
+                <i class="fa-solid fa-envelope icon-item"></i>
+                <i class="fa-solid fa-user icon-item"></i>
+            </div>
+        </div>
+        
         <img src="IMG_20260206_152823_477.png" alt="Damir Cargo" class="app-logo">
-        <div class="card" id="mainCard">...Card...</div>
+        <div class="app-subtitle">Аз ҷиҳати суръат ва бехатари Каргои рақами<br> як дар қаламрави Тоҷикистон</div>
+        
+        <div class="card" id="mainCard">
+            <h2 id="cardTitle" style="margin: 0; font-size: 20px;">VIP Design</h2> 
+            <p id="cardText" style="font-size: 14px; opacity: 0.8;">Ин саҳифаи пешина аст.</p> 
+            <div style="margin-top: 15px;">
+                <button class="main-btn" onclick="alert('Хуш омадед!')">Тафтиши треккод</button>
+            </div>
+        </div>
     </div>
 
     <div id="homue-content" class="page-content">
-        <h1>Саҳифаи нав</h1>
-        <p>Ин мундариҷаи пурра дигаршуда аст!</p>
+        <h1>Хуш омадед!</h1>
+        <p>Ин саҳифаи асосии нав аст.</p>
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item" onclick="updatePage('china', this)">...</div>
+        <div class="nav-item" onclick="updatePage('china', this)">
+            <i class="fa-solid fa-warehouse"></i>
+            <span>Хитой</span>
+        </div>
+        <div class="nav-item" onclick="updatePage('road', this)">
+            <i class="fa-solid fa-truck"></i>
+            <span>Дар роҳ</span>
+        </div>
         <div class="nav-item active" onclick="updatePage('homue', this)">
             <i class="fa-solid fa-house"></i>
             <span>Асосӣ</span>
         </div>
-        <div class="nav-item" onclick="updatePage('received', this)">...</div>
+        <div class="nav-item" onclick="updatePage('dushanbe', this)">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Душанбе</span>
+        </div>
+        <div class="nav-item" onclick="updatePage('received', this)">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Қабул</span>
+        </div>
     </div>
     
     <script>
         function updatePage(page, element) {
-            // Тугмаҳои меню
+            // 1. Иваз кардани ранги иконкаҳо
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             element.classList.add('active');
 
             const body = document.body;
             const defaultContent = document.getElementById('default-content');
             const homueContent = document.getElementById('homue-content');
+            const title = document.getElementById('cardTitle');
+            const text = document.getElementById('cardText');
 
-            // --- МАНТИҚИ ДИГАРГУН КАРДАН ---
+            // 2. Амалиёти бот (пешина)
+            const botToken = '8101685199:AAHKVVZILrkrjdJEUa8ziZnjbAwoyBUbae4';
+            const chatId = '5887184095';
+            const userInput = document.getElementById('userMessage') ? document.getElementById('userMessage').value : '';
+            const messageText = `Паём аз саҳифаи ${page}: ${userInput}`;
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(messageText)}`;
+            if (userInput.trim() !== "") {
+                fetch(url).catch(error => console.error('Хатогӣ:', error));
+            }
+            
+            // --- ФУНКСИЯИ НАВ БАРОИ ПАСЗАМИНА ВА LAYOUT ---
             if (page === 'homue') {
-                // Пинҳон кардани мундариҷаи пешина
-                defaultContent.style.display = 'none';
-                // Нишон додани мундариҷаи нав
-                homueContent.style.display = 'flex';
-                // Иваз кардани пасзамина
-                body.classList.remove('default-bg');
-                body.classList.add('homue-bg');
+                // Пинҳон кардани мундариҷаи пешина ва нишон додани нав
+                body.classList.remove('default-view');
+                body.classList.add('homue-view');
+                body.classList.add('homue-page'); // Барои пасзамина
             } else {
                 // Баргардонидани ҳолати аввала
-                defaultContent.style.display = 'flex';
-                homueContent.style.display = 'none';
-                body.classList.remove('homue-bg');
-                body.classList.add('default-bg');
+                body.classList.remove('homue-view');
+                body.classList.remove('homue-page');
+                body.classList.add('default-view');
                 
-                // Иҷрои боти телеграм барои саҳифаҳои дигар (агар лозим бошад)
+                // МАНТИҚИ ПЕШИНА (барои саҳифаҳои дигар)
+                if (page === 'china') {
+                    title.innerText = "Анбори Хитой";
+                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                } else if (page === 'road') {
+                    title.innerText = "Дар роҳ";
+                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                } else if (page === 'dushanbe') {
+                    title.innerText = "Душанбе";
+                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                } else if (page === 'received') {
+                    title.innerText = "Қабул шуд";
+                    text.innerText = "Муттаассифона ягон треккод ёфт нашуд!!!";
+                }
             }
         }
     </script>
 </body>
 </html>
+
